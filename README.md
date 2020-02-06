@@ -45,10 +45,12 @@ For further Video(data) stream operations Logitech utalizes Apples Core Video Fr
 
 ## Hardware:
 
+The PCB of the webcam consists of 5 main components, which are the camera, the microphone, a microcontroller, a quarts, an eprom.
+All of those main components are connected to the microcontroller, the eprom is propably used as buffer for imgs and the qurts to synchronize video frame rate.  
 The diode, responsible for the indication light is connected to ground via. a transistor which is connecterd to a onboard IC. 
 
 ## Indicator Light Bypass:
 
-Since the indicator LED is more or less directly connected to the microcontroller and their is no indication of direct LED control through the software drivers on the computer(the analysed LogitechWebcamComponent), It can only be assumed that the LED is controlled by the firmware on the on board microcontroller.
+Since the indicator LED is more or less directly connected to the microcontroller and their is no indication of direct LED control through the software drivers on the computer(the analysed Logi techWebcamComponent), It can only be assumed that the LED is controlled by the firmware on the on board microcontroller.
 Also, there are no big data chunks in the analysed code, which could contain the firmware and would give us control over the IC firmware, which would be a powerfull attack vector.  
 In summary it can be assumed that, their is no immediate obvious or easy to exploit issue in the software stack concept.
