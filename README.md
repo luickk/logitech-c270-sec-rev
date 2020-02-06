@@ -1,16 +1,17 @@
-# Logitech C270 
+# Logitech C270
 
-Analysis of the MacOs `LogitechWebcamComponent` Framework and Hardware.
-The disassambly was done by IDA and can  be found in the IDA folder.
+Analysis of the MacOs `LogitechWebcamComponent` Framework and WebCam Hardware.
+The `LogitechWebcamComponent.framework` can be found in the "LogiCameraSettings_2.6.2.pkg" package or a in any other Logitech Webcam app for Mac, since it is the core lib for interacting with Logitech libraries.
+The disassembly was done with IDA Pro, the `LogitechWebcamComponent.framework` can be found in `LogitechWebcamComponent.framework/Libraries/libwebcamLib.dylib`.
 
 ## `LogitechWebcamComponent` Analysis: <br>
 
 ### Functions/ Exports:
 
-#### VCInterface_: 
+#### VCInterface_:
 Video Control Interface
 Resembles the standard Video Control Interface for basic configurations and oprerations with the camera.
-Logitech's 
+Logitech's
 
 #### ACL_ Interface: Bluetooth Protocol:
 
@@ -40,14 +41,14 @@ The latest revision of the USB video class specification carries the version num
 
 #### IOKit, Core Media IO, Core Video Framework:
 
-Logitech Core API implements methods from the IOKit Framework to manage low lvl communication with the webcam. To handle data streams and basic configuration apples CoreMediaIO (CM)Framework is use. 
+Logitech Core API implements methods from the IOKit Framework to manage low lvl communication with the webcam. To handle data streams and basic configuration apples CoreMediaIO (CM)Framework is use.
 For further Video(data) stream operations Logitech utalizes Apples Core Video Framework (CV).
 
 ## Hardware:
 
 The PCB of the webcam consists of 5 main components, which are the camera, the microphone, a microcontroller, a quarts, an eprom.
 All of those main components are connected to the microcontroller, the eprom is propably used as buffer for imgs and the qurts to synchronize video frame rate.  
-The diode, responsible for the indication light is connected to ground via. a transistor which is connecterd to a onboard IC. 
+The diode, responsible for the indication light is connected to ground via. a transistor which is connecterd to a onboard IC.
 
 ## Indicator Light Bypass:
 
