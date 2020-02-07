@@ -1,7 +1,7 @@
 # Logitech C270
 
 Analysis of the MacOs `LogitechWebcamComponent` Framework and WebCam Hardware.
-The `LogitechWebcamComponent.framework` can be found in the "LogiCameraSettings_2.6.2.pkg" package or a in any other Logitech Webcam app for Mac, since it is the core lib for interacting with Logitech libraries.
+The `LogitechWebcamComponent.framework` can be found in the "LogiCameraSettings_2.6.2.pkg" package or a in any other Logitech Webcam app for Mac, since it is the core lib for interacting with Logitech devices.
 The disassembly was done with IDA Pro, the `LogitechWebcamComponent.framework` can be found in `LogitechWebcamComponent.framework/Libraries/libwebcamLib.dylib`.
 
 ## `LogitechWebcamComponent` Analysis: <br>
@@ -9,8 +9,7 @@ The disassembly was done with IDA Pro, the `LogitechWebcamComponent.framework` c
 ### Functions/ Exports:
 
 #### VCInterface_:
-Video Control Interface
-Resembles the standard Video Control Interface for basic configurations and oprerations with the camera.
+The video control interface resembles the standard Video Control Interface for basic configurations and oprerations with the camera.
 Logitech's
 
 #### ACL_ Interface: Bluetooth Protocol:
@@ -31,7 +30,7 @@ depend on ACL flags and objects.  Offer methods for Bluetooth data and device ma
 #### LVCMM_, LVC_, LVUVC_, LogiUVC_ Interface:
 Logitech Video Control Manager, Logitech Video Controller, Logitech Video Universal USB Controller, Logitech USB Video Class
 
-LVCMM_, LVC which handle basic device event management and video format,resolution configuration. LVUVC_ handles video device get/set methods.
+LVCMM_, LVC handle the basic device event management and video format, resolution configuration. LVUVC_ handles video device get/set methods.
 
 The LogiUVC_ methods implement camera device discovery/ scanning.
 The USB video device class (also USB video class or UVC) is a USB device class that describes devices capable of streaming video like webcams, digital camcorders, transcoders, analog video converters and still-image cameras.
