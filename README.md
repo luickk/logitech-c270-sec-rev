@@ -55,6 +55,6 @@ The diode, responsible for the indication light is connected to ground via. a tr
 
 ![webcam pcb](media/pcb.JPG)
 
-Since the indicator LED is more or less directly connected to the microcontroller and their is no indication of direct LED control through the software drivers on the computer(the analysed Logi techWebcamComponent), It can only be assumed that the LED is controlled by the firmware on the on board microcontroller.
-Also, there are no big data chunks in the analysed code, which could contain the firmware and would give us control over the IC firmware, which would be a powerfull attack vector.  
-In summary it can be assumed that, their is no immediate obvious or easy to exploit issue in the software stack concept.
+Since the indicator LED is more or less directly connected to the microcontroller and their is no indication of direct LED control through the software drivers on the computer(the analysed Logi techWebcamComponent). It can only be assumed that the LED is controlled by the firmware on the onboard microcontroller.
+Also, there are a few big chunks of data which are obfuscated/ encrypted or could be firmware for the onboard microcontroller. The data chunks found are 2.4 mb and 118 kb in size and require further intelligence to tell if they are firmware. If it was firmware, it would give us control over the IC, which would be a very powerfull attack vector since the IC controls the LED.   
+In summary it can be assumed that, their is no obvious or easy to exploit issue in the software stack concept.
