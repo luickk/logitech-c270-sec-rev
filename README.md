@@ -45,15 +45,17 @@ For further Video(data) stream operations Logitech utalizes Apples Core Video Fr
 
 ## Hardware:
 
-The PCB of the webcam consists of 5 main components, which are the camera, the microphone, a microcontroller, a quarts, an eprom.
-All of those main components are connected to the microcontroller, the eprom is propably used as buffer for imgs and the qurts to synchronize video frame rate.  
-The diode, responsible for the indication light is connected to ground via. a transistor which is connecterd to a onboard IC.
+The PCB of the webcam consists of 5 main components, which are the camera, the microphone, an IC, a quarts, an eprom.
+All of those main components are connected to the IC, the eprom is propably used as buffer for imgs and the quarts to clock the USB interface or synchronize video frame rate.  
+The diode, responsible for the indication light is connected to ground via. a transistor which is connecterd to an onboard IC.
+The IC is most likely some kind of SoC with a custom firmware, since there is a quarts which is most likely used for usb interface timing.
+
+Also, there is a huge chunk of data in the `LogitechWebcamComponent` Framework, which could be the be firmware of the onboard IC (you can find a dump of the data in `possible_firmware.hex`). The data can indeed be disassembled with an AVR (Atmel) or x86 disassembler. Though it got to be said that it is far more likely to be an AVR architecture hence an Atmel chip. 
 
 ## **Possible** Indicator Light bypass
 
 
 ![webcam pcb](media/pcb.JPG)
 
-Since the indicator LED is more or less directly connected to the microcontroller and their is no indication of direct LED control through the software drivers on the computer(the analysed Logi techWebcamComponent). It can only be assumed that the LED is controlled by the firmware on the onboard microcontroller.
-Also, there are a few big chunks of data which are obfuscated/ encrypted or could be firmware for the onboard microcontroller. The data chunks found are 2.4 mb and 118 kb in size and require further intelligence to tell if they are firmware. If it was firmware, it would give us control over the IC, which would be a very powerfull attack vector since the IC controls the LED.   
+Since the indicator LED is more or less directly connected to the IC and their is no indication of direct LED control through the software drivers on the computer(the analysed Logi techWebcamComponent). It can only be assumed that the LED is controlled by the firmware on the onboard IC. If it was firmware, it would give us control over the IC, which would be a very powerfull attack vector since the IC controls the LED.   
 In summary it can be assumed that, their is no obvious or easy to exploit issue in the software stack concept.
